@@ -39,6 +39,7 @@ let token = ""
 
 app.post('/webhook', (req, res) => {
   token = req.query['hub.verify_token'];
+  console.log(token)
   let messaging_events = req.body.entry[0].messaging
   if (messaging_events !== undefined) {
     for (let i = 0; i < messaging_events.length; i++) {
