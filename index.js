@@ -47,18 +47,18 @@ app.post('/webhook', (req, res) => {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-        sendText(sender, "Text echo: " + text.substring(0, 100))
+        sendText(sender, "Text echo: " + text.substring(0, 100),token)
       }
       res.sendStatus(200)
     }
   }else{
-    console.log(JSON.stringify(req.body.entry[0].messaging))
+    console.log(JSON.stringify(req.body.entry[0].messaging, token))
     let event = messaging_events[0]
     let sender = event.sender.id
-    sendText(sender, "Text echo: undifined")
+    sendText(sender, "Text echo: undifined", token)
   }
 });
-function sendText(sender, text) {
+function sendText(sender, text, token) {
   let messageData = { text: text }
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
