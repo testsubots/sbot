@@ -38,7 +38,7 @@ let token = ""
 // let token = "subotnew"
 
 app.post('/webhook', (req, res) => {
-  token = req.query['hub.verify_token'];
+  token = "EAAszq7UbuyYBAGaSYn8SK092ZCGSoRvhKtQvsFtTDOcEABwFv5T1VsatCbwWBo9WBTHfOMNwag5Wlrbd6qSq9PZABmb4AYR6E5jx7Bt9VHcSdrU7g8dzVOkUFjmqARYxQ9EjZCXdcueIZAeE3qFeDjQiVC6mVEz8m9OGsvQiexFSp1LTvoV6DjLZCRiDQwdAZD";
   console.log(token)
   let messaging_events = req.body.entry[0].messaging
   if (messaging_events !== undefined) {
