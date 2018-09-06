@@ -2,6 +2,7 @@
 
 const
   express = require('express'),
+  request = require('request'),
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json());
 
@@ -56,7 +57,7 @@ app.post('/webhook', (req, res) => {
 });
 function sendText(sender, text) {
   let messageData = { text: text }
-  Request({
+  request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: { access_token, token },
     method: "POST",
