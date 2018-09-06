@@ -34,7 +34,7 @@ app.listen(process.env.PORT || 8080, () => {
 //   }
 
 // });
-
+let token = ""
 app.post('/webhook', (req, res) => {
   let messaging_events = req.body.entry[0].messaging_events
   if (messaging_events !== undefined) {
