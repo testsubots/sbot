@@ -37,7 +37,7 @@ app.listen(process.env.PORT || 8080, () => {
 
 app.post('/webhook', (req, res) => {
   let messaging_events = req.body.entry[0].messaging_events
-  if (messaging_events != undefined) {
+  if (messaging_events !== undefined) {
     for (let i = 0; i < messaging_events.length; i++) {
       let event = messaging_events[i]
       let sender = event.sender.id
@@ -49,7 +49,24 @@ app.post('/webhook', (req, res) => {
     }
   }
 });
-
+function sendText(send, text) {
+  let messageData = { text: text }
+  requestAnimationFrame({
+    url: "https://graph.facebook.com/v2.6/me/messages",
+    qs: { access_token, token },
+    method: "POST",
+    json: {
+      receipt: { id: sender },
+      message: messageData
+    }, function(error, response, body) {
+      if (error) {
+        console.log('Sending an error')
+      } else if (response.body.error) {
+        console.log("body error")
+      }
+    }
+  })
+}
 app.get('/', function (req, res) {
   return res.send('Welcome to Intuit Webhooks Sample App');
 });
@@ -83,22 +100,5 @@ app.get('/webhook', (req, res) => {
     }
   }
 
-  function sendText(send, text) {
-    let messageData = { text: text }
-    requestAnimationFrame({
-      url: "https://graph.facebook.com/v2.6/me/messages",
-      qs: { access_token, token },
-      method: "POST",
-      json: {
-        receipt: { id: sender },
-        message: messageData
-      }, function(error, response, body) {
-        if (error) {
-          console.log('Sending an error')
-        } else if (response.body.error) {
-          console.log("body error")
-        }
-      }
-    })
-  }
+
 });
