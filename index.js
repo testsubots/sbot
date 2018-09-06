@@ -1,8 +1,7 @@
 'use strict';
-
+var request = require('request');
 const
   express = require('express'),
-  request = require('request'),
   bodyParser = require('body-parser'),
   app = express().use(bodyParser.json());
 
