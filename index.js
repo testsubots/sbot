@@ -5,7 +5,7 @@ express = require('express'),
 bodyParser = require('body-parser'),
 app = express().use(bodyParser.json());
 
-app.listen(process.env.PORT || 1337, ()=>{
+app.listen(process.env.PORT || 80, ()=>{
 	console.log('sbot webhook is listening')
 });
 
