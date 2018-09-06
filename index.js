@@ -65,8 +65,6 @@ app.get('/webhook', (req, res) => {
       res.sendStatus(403);      
     }
   }
-});
-
 body.entry.forEach(function(entry) {
 
   // Gets the body of the webhook event
@@ -105,3 +103,4 @@ function callSendAPI(sender_psid, response) {
     "message": response
   }
 }
+});
