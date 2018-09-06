@@ -60,7 +60,7 @@ function sendText(sender, text) {
   let messageData = { text: text }
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: { access_token, token },
+    qs: { access_token, "50b0a8a5d38b4364d0933dfe8edff701" },
     method: "POST",
     json: {
       receipt: { id: sender },
