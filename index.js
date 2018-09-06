@@ -48,6 +48,8 @@ app.post('/webhook', (req, res) => {
       res.sendStatus(200)
     }
   }else{
+    let event = messaging_events[0]
+    let sender = event.sender.id
     sendText(sender, "Text echo: undifined")
   }
 });
