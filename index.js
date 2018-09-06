@@ -9,30 +9,43 @@ app.listen(process.env.PORT || 8080, ()=>{
 	console.log('sbot webhook is listening')
 });
 
-// Creates the endpoint for our webhook 
-app.post('/webhook', (req, res) => {  
+// // Creates the endpoint for our webhook 
+// app.post('/webhook', (req, res) => {  
  
-  let body = req.body;
+//   let body = req.body;
 
-  // Checks this is an event from a page subscription
-  if (body.object === 'page') {
+//   // Checks this is an event from a page subscription
+//   if (body.object === 'page') {
 
-    // Iterates over each entry - there may be multiple if batched
-    body.entry.forEach(function(entry) {
+//     // Iterates over each entry - there may be multiple if batched
+//     body.entry.forEach(function(entry) {
 
-      // Gets the message. entry.messaging is an array, but 
-      // will only ever contain one message, so we get index 0
-      let webhook_event = entry.messaging[0];
-      console.log(webhook_event);
-    });
+//       // Gets the message. entry.messaging is an array, but 
+//       // will only ever contain one message, so we get index 0
+//       let webhook_event = entry.messaging[0];
+//       console.log(webhook_event);
+//     });
 
-    // Returns a '200 OK' response to all requests
-    res.status(200).send('EVENT_RECEIVED');
-  } else {
-    // Returns a '404 Not Found' if event is not from a page subscription
-    res.sendStatus(404);
+//     // Returns a '200 OK' response to all requests
+//     res.status(200).send('EVENT_RECEIVED');
+//   } else {
+//     // Returns a '404 Not Found' if event is not from a page subscription
+//     res.sendStatus(404);
+//   }
+
+// });
+
+app.post('/webhook', (req, res) => {  
+let messaging_events =  req.body.entry[0].messaging_events
+for(let i=0; i<messaging_events.length;i++){
+  let event = messaging_events[i]
+  let sender = event.sender.id
+  if(event.message && event.message.text){
+    let text = event.message.text
+    sendText(sender,"Text echo: "+ text.substring(0,100))
   }
-
+  res.sendStatus(200)
+}
 });
 
 app.get('/', function(req, res) {
@@ -67,42 +80,23 @@ app.get('/webhook', (req, res) => {
       res.sendStatus(403);      
     }
   }
-body.entry.forEach(function(entry) {
 
-  // Gets the body of the webhook event
-  let webhook_event = entry.messaging[0];
-  console.log(webhook_event);
-
-  // Get the sender PSID
-  let sender_psid = webhook_event.sender.id;
-  console.log('Sender PSID: ' + sender_psid);
-
-});
-
-function handleMessage(sender_psid, received_message) {
-
-  let response;
-
-  // Check if the message contains text
-  if (received_message.text) {    
-
-    // Create the payload for a basic text message
-    response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+function sendText(send,text){
+  let messageData = {text:text}
+  requestAnimationFrame({
+    url: "https://graph.facebook.com/v2.6/me/messages",
+    qs:{access_token, token},
+    method: "POST",
+    json:{
+      receipt: {id: sender},
+      message: messageData
+    },function(error,response, body){
+      if(error){
+        console.log('Sending an error')
+      }else if(response.body.error){
+        console.log("body error")
+      }
     }
-  }  
-  
-  // Sends the response message
-  callSendAPI(sender_psid, response);    
-}
-
-function callSendAPI(sender_psid, response) {
-  // Construct the message body
-  let request_body = {
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": response
-  }
+  })
 }
 });
