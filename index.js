@@ -53,7 +53,7 @@ app.post('/webhook', (req, res) => {
     sendText(sender, "Text echo: undifined")
   }
 });
-function sendText(send, text) {
+function sendText(sender, text) {
   let messageData = { text: text }
   requestAnimationFrame({
     url: "https://graph.facebook.com/v2.6/me/messages",
