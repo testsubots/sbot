@@ -47,6 +47,8 @@ app.post('/webhook', (req, res) => {
       }
       res.sendStatus(200)
     }
+  }else{
+    sendText(sender, "Text echo: undifined")
   }
 });
 function sendText(send, text) {
