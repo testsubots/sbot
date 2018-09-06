@@ -34,7 +34,9 @@ app.listen(process.env.PORT || 8080, () => {
 //   }
 
 // });
-let token = "subotnew"
+let token = "50b0a8a5d38b4364d0933dfe8edff701"
+// let token = "subotnew"
+
 app.post('/webhook', (req, res) => {
   let messaging_events = req.body.entry[0].messaging
   if (messaging_events !== undefined) {
