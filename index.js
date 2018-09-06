@@ -34,7 +34,7 @@ app.listen(process.env.PORT || 8080, () => {
 //   }
 
 // });
-let token = "50b0a8a5d38b4364d0933dfe8edff701"
+let token = ""
 // let token = "subotnew"
 
 app.post('/webhook', (req, res) => {
@@ -60,7 +60,7 @@ function sendText(sender, text) {
   let messageData = { text: text }
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: { access_token, "50b0a8a5d38b4364d0933dfe8edff701" },
+    qs: { access_token, token },
     method: "POST",
     json: {
       receipt: { id: sender },
