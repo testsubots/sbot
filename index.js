@@ -36,7 +36,7 @@ app.listen(process.env.PORT || 8080, () => {
 // });
 let token = ""
 app.post('/webhook', (req, res) => {
-  let messaging_events = req.body.entry[0].messaging_events
+  let messaging_events = req.body.entry[0].messaging
   if (messaging_events !== undefined) {
     for (let i = 0; i < messaging_events.length; i++) {
       let event = messaging_events[i]
@@ -48,7 +48,7 @@ app.post('/webhook', (req, res) => {
       res.sendStatus(200)
     }
   }else{
-    console.log(req.body)
+    console.log(req.body.entry[0].messaging)
     let event = messaging_events[0]
     let sender = event.sender.id
     sendText(sender, "Text echo: undifined")
