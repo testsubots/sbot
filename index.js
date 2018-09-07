@@ -50,7 +50,7 @@ app.post('/webhook', (req, res) => {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-      console.log(JSON.stringify(event.message.text))
+      console.log(text.substring(0, 100))
 
         sendText(sender, "Text echo: " + text.substring(0, 100),token)
       }
