@@ -69,7 +69,7 @@ function sendText(sender, text, token) {
   console.log('token eka: '+token)
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: { access_token, "EAAszq7UbuyYBALSUt1fN3BJkP7g4BeTVZCO2MjJoptecN22cwG3gcjllRw36abRQ9YG2ZAuyWGEYrq5XGn9I8uhFKuGNZAT1D5LfJaG32YaNY27RhjEd93qEjFScYZBpGb3T0Yjyn4PZAF2e77MZArEk5p5rh4dDOSzLZAEhy1dKqZAFAe3LUGd1wJpuwwVvclqrX2N8nblRsgE3zmZByzd4R" },
+    qs: { access_token, token },
     method: "POST",
     json: {
       receipt: { id: sender },
