@@ -38,7 +38,7 @@ let token = ""
 // let token = "subotnew"
 
 app.post('/webhook', (req, res) => {
-  token = "subotnew";
+  token = "EAAszq7UbuyYBAC2YqDwsZCEItGNLKFVsLwQxB2tr1Cp8uX6pIiSyOpJkG1JlaxidqaSwZAX5dJ3rKaCWKoPqzp8ZAycV60f3GAPoOPxB44ZCZCpHbYsZBlHSejkwUZCxEKJeVUViDG8caeOZAleZAI0IX6uiR8hQDWTICY0wVs2eJ4Kcs204XXPyK2kbZC0KEpPg0ZD";
   console.log(token)
   // console.log(JSON.stringify(req.body.entry[0].messaging[3].message.text))
 
@@ -50,6 +50,7 @@ app.post('/webhook', (req, res) => {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
+        let newtxt = messaging_events[messaging_events.length-1].message.text
       console.log(text.substring(0, 100))
 
         sendText(sender, "Text echo: " + text.substring(0, 100),token)
