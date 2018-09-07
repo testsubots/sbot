@@ -40,7 +40,7 @@ let token = ""
 app.post('/webhook', (req, res) => {
   token = "subotnew";
   console.log(token)
-  let messaging_events = req.body.entry[0].messaging_events
+  let messaging_events = req.body.entry[0].messaging
   if (messaging_events !== undefined) {
     for (let i = 0; i < messaging_events.length; i++) {
       let event = messaging_events[i]
@@ -52,7 +52,7 @@ app.post('/webhook', (req, res) => {
       res.sendStatus(200)
     }
   }else{
-    console.log(JSON.stringify(req.body.entry[0].messaging_events, token))
+    console.log(JSON.stringify(req.body.entry[0].messaging, token))
     let event = messaging_events[0]
     let sender = event.sender.id
     sendText(sender, "Text echo: undifined", token)
