@@ -38,7 +38,7 @@ let token = ""
 // let token = "subotnew"
 
 app.post('/webhook', (req, res) => {
-  token = "EAAszq7UbuyYBAC2YqDwsZCEItGNLKFVsLwQxB2tr1Cp8uX6pIiSyOpJkG1JlaxidqaSwZAX5dJ3rKaCWKoPqzp8ZAycV60f3GAPoOPxB44ZCZCpHbYsZBlHSejkwUZCxEKJeVUViDG8caeOZAleZAI0IX6uiR8hQDWTICY0wVs2eJ4Kcs204XXPyK2kbZC0KEpPg0ZD";
+  token = "EAAszq7UbuyYBALSUt1fN3BJkP7g4BeTVZCO2MjJoptecN22cwG3gcjllRw36abRQ9YG2ZAuyWGEYrq5XGn9I8uhFKuGNZAT1D5LfJaG32YaNY27RhjEd93qEjFScYZBpGb3T0Yjyn4PZAF2e77MZArEk5p5rh4dDOSzLZAEhy1dKqZAFAe3LUGd1wJpuwwVvclqrX2N8nblRsgE3zmZByzd4R";
   console.log(token)
   // console.log(JSON.stringify(req.body.entry[0].messaging[3].message.text))
 
@@ -69,7 +69,7 @@ function sendText(sender, text, token) {
   console.log('token eka: '+token)
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: { access_token, token },
+    qs: { access_token, "EAAszq7UbuyYBALSUt1fN3BJkP7g4BeTVZCO2MjJoptecN22cwG3gcjllRw36abRQ9YG2ZAuyWGEYrq5XGn9I8uhFKuGNZAT1D5LfJaG32YaNY27RhjEd93qEjFScYZBpGb3T0Yjyn4PZAF2e77MZArEk5p5rh4dDOSzLZAEhy1dKqZAFAe3LUGd1wJpuwwVvclqrX2N8nblRsgE3zmZByzd4R" },
     method: "POST",
     json: {
       receipt: { id: sender },
