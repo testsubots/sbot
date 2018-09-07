@@ -61,6 +61,7 @@ app.post('/webhook', (req, res) => {
     
     let event = messaging_events[0].messaging
     let sender = event.sender.id
+    console.log('... is not defined')
     sendText(sender, "Text echo: undifined", token)
   }
 });
@@ -69,7 +70,7 @@ function sendText(sender, text, token) {
   console.log('token eka: '+token)
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: { access_token, token },
+    qs: { access_token : token },
     method: "POST",
     json: {
       receipt: { id: sender },
