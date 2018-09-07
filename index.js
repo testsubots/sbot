@@ -85,8 +85,7 @@ function sendText(sender, text, token) {
   })
 }
 app.get('/', function (req, res) {
-  return res.sendFile('index.html')
-  // return res.send('Welcome to Intuit Webhooks Sample App');
+  return res.send('Welcome to SuBot App');
 });
 
 // Adds support for GET requests to our webhook
