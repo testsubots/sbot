@@ -53,7 +53,7 @@ app.post('/webhook', (req, res) => {
         let newtxt = messaging_events[messaging_events.length-1].message.text
       console.log(newtxt.substring(0, 100))
 
-        sendText(sender, "Text echo: " + text.substring(0, 100),token)
+        sendText(sender, "Supun said that you say: " + text.substring(0, 100),token)
       }
       res.sendStatus(200)
     }
