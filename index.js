@@ -52,8 +52,8 @@ app.post('/webhook', (req, res) => {
       res.sendStatus(200)
     }
   }else{
-    console.log(JSON.stringify(req.body.entry[0].messaging, token))
-    let event = messaging_events[0]
+    console.log(JSON.stringify(req.body.entry[0], token))
+    let event = messaging_events[0].messaging
     let sender = event.sender.id
     sendText(sender, "Text echo: undifined", token)
   }
