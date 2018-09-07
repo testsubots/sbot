@@ -41,10 +41,11 @@ app.post('/webhook', (req, res) => {
   token = "subotnew";
   console.log(token)
   console.log(JSON.stringify(req.body.entry[0].messaging[3].message.text))
-  var lengthMsg =req.body.entry[0].messaging.length
-  console.log(lengthMsg)
+
 
   let messaging_events = req.body.entry[0].messaging
+  var lengthMsg =messaging_events.length
+  console.log(lengthMsg)
   if (messaging_events !== undefined) {
     for (let i = 0; i < messaging_events.length; i++) {
       let event = messaging_events[i]
