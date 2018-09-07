@@ -66,6 +66,7 @@ app.post('/webhook', (req, res) => {
 });
 function sendText(sender, text, token) {
   let messageData = { text: text }
+  console.log('token eka: '+token)
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: { access_token, token },
