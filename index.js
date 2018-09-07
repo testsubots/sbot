@@ -40,7 +40,7 @@ let token = ""
 app.post('/webhook', (req, res) => {
   token = "subotnew";
   console.log(token)
-  console.log(JSON.stringify(req.body.entry[0].messaging[3].message.text))
+  // console.log(JSON.stringify(req.body.entry[0].messaging[3].message.text))
 
 
   let messaging_events = req.body.entry[0].messaging
