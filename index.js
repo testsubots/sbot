@@ -39,7 +39,7 @@ let token = ""
 
 app.post('/webhook', (req, res) => {
   token = "EAAszq7UbuyYBAPzx3VzSVLE2AnijQjg7g2rwzOKKv6By7I42NeGV5rYojQkI34iu7QMlf6PusTpdvb4KwRzpz97cRmTingY6U9A1foNZAqv9iaF6mULPS2pWH8P22KFN9qhXj1rZBy6ZCKXwe9syfnsuXz2DvRKjTzl05PmeLv8iXP3yXbP7Wx0L9PVsj4ZD";
-  console.log(token)
+  // console.log(token)
   // console.log(JSON.stringify(req.body.entry[0].messaging[3].message.text))
 
 
