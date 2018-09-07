@@ -62,7 +62,7 @@ app.post('/webhook', (req, res) => {
     let event = messaging_events[0].messaging
     let sender = event.sender.id
     console.log('... is not defined')
-    sendText(sender, "Text echo: undifined", token)
+    sendText(sender, "Supun says: undifined", token)
   }
 });
 function sendText(sender, text, token) {
