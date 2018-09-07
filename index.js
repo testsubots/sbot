@@ -67,13 +67,13 @@ app.post('/webhook', (req, res) => {
 });
 function sendText(sender, text, token) {
   let messageData = { text: text }
-  console.log('token eka: '+token)
+  // console.log('token eka: '+token)
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: { access_token : token },
     method: "POST",
     json: {
-      receipt: { id: sender },
+      recipient: { id: sender },
       message: messageData
     }, function(error, response, body) {
       if (error) {
