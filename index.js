@@ -84,6 +84,7 @@ function sendText(sender, text, token) {
     }
   })
 }
+
 app.get('/', function (req, res) {
   return res.send('Welcome to SuBot App');
 });
